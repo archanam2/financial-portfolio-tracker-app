@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import './AddFormModal.css';
-import Backdrop from '../Backdrop/Backdrop';
+import './AddForm.css';
+import Back from '../Back/Back';
 
-class AddFormModal extends Component {
+class AddForm extends Component {
     constructor(props){        
         super(props)
         this.state={        
@@ -10,15 +10,11 @@ class AddFormModal extends Component {
          }
          console.log(props);
     }
-   //This will update the props in child whenever state changes in parent.
    static getDerivedStateFromProps(props, state) {
     return {
         showModal:props.showModal
     };
    }
-    
-        
-        //Function for Form validation for all input fields   
         checkNumber(){
             let numberOutput=document.getElementById("number");  
             let n=document.myForm.shares;
@@ -69,15 +65,11 @@ class AddFormModal extends Component {
                 d.style.backgroundColor="Lightgray";
              }
          }
-               
-        
-
         render() {
-            
-        return (
+            return (
             (this.state.showModal)?
             <div>
-                <Backdrop/>
+                <Back/>
                 <div className="AddStockForm" style={{height:'650px', textAlign:'center', position:'fixed', backgroundColor:'white' ,zIndex: 500, left: '15%', top: '15%', boxSizing: 'border-box', width: '70%'}}>
                     <button onClick={()=>this.props.closeButton()} id="close">x</button>
                     <h1>Add {this.props.companyName}   to My Stocks</h1>
@@ -91,10 +83,8 @@ class AddFormModal extends Component {
                 </div>
                 
             </div>:null
-            
-            
-        )
+         )
     }
 }
 
-export default AddFormModal;
+export default AddForm;

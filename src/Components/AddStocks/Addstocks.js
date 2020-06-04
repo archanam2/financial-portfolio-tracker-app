@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './Addstocks.css';
-import AddFormModal from '../Form/AddFormModal/AddFormModal'
+import AddForm from '../Form/AddForm/AddForm'
 
 class Addstocks extends Component {
     constructor(props) {
@@ -14,9 +14,7 @@ class Addstocks extends Component {
              companySymbol:this.props.companySymbol
         }
         console.log(props);
-        
     }
-    //This will update the props in child whenever state changes in parent.
     static getDerivedStateFromProps(props, state) {
         return {
          myCompanies: props.companies,
@@ -24,18 +22,15 @@ class Addstocks extends Component {
          id:props.id, 
          companyName:props.companyName,
          companySymbol:props.companySymbol
-         
-        };
+         };
        }
-    
-    render() {
-        
+     render() {
         let companyArray=[];
         let showMessage="";
             if(this.state.myCompanies.length>3)
             {
             companyArray=this.state.myCompanies.map((item,index)=>{
-             const {symbol,name}= item;//Destructuring
+             const {symbol,name}= item;
                 return(
                 <li key={symbol}>
                     <button className="StockButton" type="button" onClick={()=>this.props.addStockHandler(index)} >{symbol}</button>
@@ -44,8 +39,7 @@ class Addstocks extends Component {
                 )
             })
             }
-            
-            else
+         else
             {
                 showMessage = 
                     <div className="msg">
@@ -54,13 +48,8 @@ class Addstocks extends Component {
                     a stock if you want to add a new stock.
                   </h3>
                   </div>
-             
-
-            }
-            
-        
-        return (
-                
+                 }
+            return (
                 <div className="AddStocksTitle" >
                 <h2>Add stocks to My stocks</h2>
                 {(this.state.myCompanies.length>0)?(this.state.myCompanies.length>3)?
@@ -70,9 +59,8 @@ class Addstocks extends Component {
                 :<div >{showMessage}</div>
                 :<h1>Loading...</h1>}
                 }
-
-                {(this.state.showModal)?
-                <AddFormModal
+                 {(this.state.showModal)?
+                <AddForm
                 id={this.state.id}
                 companyName={this.state.companyName}
                 companySymbol={this.state.companySymbol}
@@ -81,9 +69,7 @@ class Addstocks extends Component {
                 closeButton={()=>{this.props.closeButton()}}
                 />:null}
                 </div>
-                
-
-        )
+         )
     }
 }
 
