@@ -8,8 +8,7 @@ h2{
      color: red;
      font-size: larger;
  }
-
-    #companyList{
+#companyList{
         margin-left: 4rem;
         margin-top: 2rem;
         width: 90vw;
@@ -18,12 +17,11 @@ h2{
         grid-gap:1rem;
         list-style-type: none;
     }
-    .AddStocksTitle{
-        
+.AddStocksTitle{
+
     }
     
-    .StockButton
-    {
+.StockButton{
         height: 2.5rem;
         width:6rem;
         border-radius: 5px;
@@ -31,19 +29,18 @@ h2{
         font-size: 20px;
         cursor: pointer;
         
-        }
-        .StockButton:hover{
-            background-color: rgb(47, 43, 43);
-            color: aliceblue;
+}
+.StockButton:hover{
+         background-color: rgb(47, 43, 43);
+        color: aliceblue;
             
-
-        }
-    .companyText{
+}
+.companyText{
        margin-left: 0.6rem;
        font-family: 'Lucida Sans';
-    }
+}
 
-    @media only screen and (max-width: 480px){
+ @media only screen and (max-width: 480px){
     
         h2{
             font-size: 1.5rem;
