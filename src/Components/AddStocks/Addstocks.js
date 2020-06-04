@@ -33,8 +33,10 @@ class Addstocks extends Component {
              const {symbol,name}= item;
                 return(
                 <li key={symbol}>
+                    <div className="AddStocksTitle">
                     <button className="StockButton" type="button" onClick={()=>this.props.addStockHandler(index)} >{symbol}</button>
                     <span className="companyText">{name}</span>
+                    </div>
                 </li>
                 )
             })
