@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './Addstocks.css';
-import AddFormModal from '../Form/AddFormModal/AddFormModal'
+import AddForm from '../Form/AddForm/AddForm'
 
 class Addstocks extends Component {
     constructor(props) {
@@ -13,7 +13,6 @@ class Addstocks extends Component {
              companyName:this.props.companyName,
              companySymbol:this.props.companySymbol
         }
-        console.log(props);
         
     }
     //This will update the props in child whenever state changes in parent.
@@ -69,10 +68,10 @@ class Addstocks extends Component {
                 </ul>
                 :<div >{showMessage}</div>
                 :<h1>Loading...</h1>}
-                }
+                
 
                 {(this.state.showModal)?
-                <AddFormModal
+                <AddForm
                 id={this.state.id}
                 companyName={this.state.companyName}
                 companySymbol={this.state.companySymbol}
@@ -87,4 +86,4 @@ class Addstocks extends Component {
     }
 }
 
-export default Addstocks
+export default Addstocks;
