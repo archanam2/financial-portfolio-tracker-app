@@ -13,6 +13,7 @@ class Addstocks extends Component {
              companyName:this.props.companyName,
              companySymbol:this.props.companySymbol
         }
+        console.log(props);
         
     }
     //This will update the props in child whenever state changes in parent.
@@ -31,31 +32,31 @@ class Addstocks extends Component {
         
         let companyArray=[];
         let showMessage="";
-            if(this.state.myCompanies.length>3)
-            {
-            companyArray=this.state.myCompanies.map((item,index)=>{
-             const {symbol,name}= item;//Destructuring
-                return(
-                <li key={symbol}>
-                    <button className="StockButton" type="button" onClick={()=>this.props.addStockHandler(index)} >{symbol}</button>
-                    <span className="companyText">{name}</span>
-                </li>
-                )
-            })
-            }
+            // if(this.state.myCompanies.length>3)
+            // {
+            // companyArray=this.state.myCompanies.map((item,index)=>{
+            //  const {symbol,name}= item;//Destructuring
+            //     return(
+            //     <li key={symbol}>
+            //         <button className="StockButton" type="button" onClick={()=>this.props.addStockHandler(index)} >{symbol}</button>
+            //         <span className="companyText">{name}</span>
+            //     </li>
+            //     )
+            // })
+            // }
             
-            else
-            {
-                showMessage = 
-                    <div className="msg">
-                    <h3>
-                    You cannot add more than 5 Stocks at a time,Remove
-                    a stock if you want to add a new stock.
-                  </h3>
-                  </div>
+            // else
+            // {
+            //     showMessage = 
+            //         <div className="msg">
+            //         <h3>
+            //         You cannot add more than 5 Stocks at a time,Remove
+            //         a stock if you want to add a new stock.
+            //       </h3>
+            //       </div>
              
 
-            }
+            // }
             
         
         return (
@@ -63,12 +64,24 @@ class Addstocks extends Component {
                 <div className="AddStocksTitle" >
                 <h2>Add stocks to My stocks</h2>
                 {(this.state.myCompanies.length>0)?(this.state.myCompanies.length>3)?
-                <ul id="companyList">
-                {companyArray}
-                </ul>
+                    companyArray=this.state.myCompanies.map((item,index)=>{
+                          const {symbol,name}= item;//Destructuring
+                             return(
+                                <ul id="companyList">
+                             <li key={symbol}>
+                                <button className="StockButton" type="button" onClick={()=>this.props.addStockHandler(index)} >{symbol}</button>
+                                <span className="companyText">{name}</span>
+                            </li>
+                            {companyArray}
+                            </ul>
+                            )
+                        })
+              
+                
+                
                 :<div >{showMessage}</div>
                 :<h1>Loading...</h1>}
-                
+                }
 
                 {(this.state.showModal)?
                 <AddForm
@@ -86,4 +99,4 @@ class Addstocks extends Component {
     }
 }
 
-export default Addstocks;
+export default Addstocks
