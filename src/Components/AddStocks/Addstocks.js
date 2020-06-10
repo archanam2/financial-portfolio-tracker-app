@@ -63,19 +63,36 @@ class Addstocks extends Component {
                 
                 <div className="AddStocksTitle" >
                 <h2>Add stocks to My stocks</h2>
-                {(this.state.myCompanies.length>0)?(this.state.myCompanies.length>3)?
+                <ul>
+                    {this.props.stockNames.map((item, index) => (
+                         <li key={index}>
+                         <button
+                            className="StockButton"
+                            onClick={() => {
+                            this.props.clickEvent(item);
+                         }}>
+                        {item.symbol}
+                        </button>
+
+                        <span>{item.name}</span>
+                        </li>
+                        
+                    ))}
+                    {companyArray}
+                </ul>
+                {/* {(this.state.myCompanies.length>0)?(this.state.myCompanies.length>3)?
                     companyArray=this.state.myCompanies.map((item,index)=>{
-                          const {symbol,name}= item;//Destructuring
+                          const {symbol,name}= item;
                              return(
-                                <ul id="companyList">
+                                // <ul id="companyList">
                              <li key={symbol}>
                                 <button className="StockButton" type="button" onClick={()=>this.props.addStockHandler(index)} >{symbol}</button>
                                 <span className="companyText">{name}</span>
                             </li>
                             {companyArray}
-                            </ul>
+                            //</ul>
                             )
-                        })
+                        }) */}
               
                 
                 
