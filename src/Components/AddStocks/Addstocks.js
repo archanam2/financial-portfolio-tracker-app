@@ -30,37 +30,9 @@ class Addstocks extends Component {
     
     render() {
         
-        let companyArray=[];
-        let showMessage="";
-            // if(this.state.myCompanies.length>3)
-            // {
-            // companyArray=this.state.myCompanies.map((item,index)=>{
-            //  const {symbol,name}= item;//Destructuring
-            //     return(
-            //     <li key={symbol}>
-            //         <button className="StockButton" type="button" onClick={()=>this.props.addStockHandler(index)} >{symbol}</button>
-            //         <span className="companyText">{name}</span>
-            //     </li>
-            //     )
-            // })
-            // }
-            
-            // else
-            // {
-            //     showMessage = 
-            //         <div className="msg">
-            //         <h3>
-            //         You cannot add more than 5 Stocks at a time,Remove
-            //         a stock if you want to add a new stock.
-            //       </h3>
-            //       </div>
-             
-
-            // }
-            
-        
+        // let companyArray=[];
+        // let showMessage="";
         return (
-                
                 <div className="AddStocksTitle" >
                 <h2>Add stocks to My stocks</h2>
                 <ul>
@@ -78,25 +50,12 @@ class Addstocks extends Component {
                         </li>
                         
                     ))}
-                    {companyArray}
+                    {/* {companyArray} */}
                 </ul>
-                {/* {(this.state.myCompanies.length>0)?(this.state.myCompanies.length>3)?
-                    companyArray=this.state.myCompanies.map((item,index)=>{
-                          const {symbol,name}= item;
-                             return(
-                                // <ul id="companyList">
-                             <li key={symbol}>
-                                <button className="StockButton" type="button" onClick={()=>this.props.addStockHandler(index)} >{symbol}</button>
-                                <span className="companyText">{name}</span>
-                            </li>
-                            {companyArray}
-                            //</ul>
-                            )
-                        }) */}
-              
+                              
                 
                 
-                :<div >{showMessage}</div>
+                {/* :<div >{showMessage}</div> */}
                 :<h1>Loading...</h1>}
                 }
 
