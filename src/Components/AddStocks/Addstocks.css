@@ -8,7 +8,8 @@ h2{
      color: red;
      font-size: larger;
  }
-#companyList{
+
+    #companyList{
         margin-left: 4rem;
         margin-top: 2rem;
         width: 90vw;
@@ -18,7 +19,8 @@ h2{
         list-style-type: none;
     }
     
-.StockButton{
+    .StockButton
+    {
         height: 2.5rem;
         width:6rem;
         border-radius: 5px;
@@ -27,7 +29,7 @@ h2{
         cursor: pointer;
         
         }
-.StockButton:hover{
+        .StockButton:hover{
             background-color: rgb(47, 43, 43);
             color: aliceblue;
             

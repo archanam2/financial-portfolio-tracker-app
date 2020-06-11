@@ -10,6 +10,7 @@ class Mystocks extends Component {
         }
         
     }
+    //This will update the props in child whenever state changes in parent.
     static getDerivedStateFromProps(props, state) {
         return {
             myStocks: props.myStocks
@@ -21,7 +22,7 @@ class Mystocks extends Component {
             if(this.state.myStocks.length!==0)
             {
                 renderArray=this.state.myStocks.map((item,index)=>{  
-                    const {Buy_Price,Company_Symbol,Company_name,No_of_Shares}= item;
+                    const {Buy_Price,Company_Symbol,Company_name,No_of_Shares}= item;//Destructuring
                      return(                   
                         <tr key={index}>   
                         <td>{Company_Symbol}</td>
@@ -42,7 +43,11 @@ class Mystocks extends Component {
                     showMessage=<h1>Loading...You don't own any Stocks!Please Add one by clicking the button below.</h1>;
                     
              }
+            
+            
+        
         return (
+            
                 <div className="MyStocks">
                 <h2>My Stocks</h2>
                 {(this.state.myStocks.length!==0)?
@@ -68,6 +73,7 @@ class Mystocks extends Component {
                         
                 }
         </div>
+        
         )
     }
 }

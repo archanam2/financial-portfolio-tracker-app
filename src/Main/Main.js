@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-
+import Header from '../Components/Header/Header';
 import Mystocks from '../Components/Mystocks/Mystocks';
 import Addstocks from '../Components/AddStocks/Addstocks';
 
@@ -68,7 +68,7 @@ import Addstocks from '../Components/AddStocks/Addstocks';
     //Function to get Final Companies after addition.        
     getFinalCompanies=()=>{
                 console.log("Final Companies update function called");
-                axios.get('https://finance-portfolio-tracke-4f671.firebaseio.com/Companies.json')
+                axios.get('https://finance-portfolio-tracke-4f671.firebaseio.com/companies.json')
                 .then((response)=>{
                 const updatedCompanies  = [];
                 for (let key in response.data)
@@ -143,7 +143,7 @@ import Addstocks from '../Components/AddStocks/Addstocks';
                     if(noofshares>0&&buyPrice.length>0&&buyDate.length>0)
                     {
                             //Adding stocks to my stocks
-                            axios.post('https://finance-portfolio-tracke-4f671.firebaseio.com/mystocks.json', {
+                            axios.post('https://finance-portfolio-tracke-11608.firebaseio.com/mystocks.json', {
                                 Company_Symbol:company_symbol,
                                 Company_name:company_name,
                                 No_of_Shares:noofshares,
@@ -195,7 +195,7 @@ import Addstocks from '../Components/AddStocks/Addstocks';
     render() {
         return (
             <div>
-                
+                <Header/>
                 
                 <Mystocks myStocks={this.state.myStocks} 
                 stopTrackingHandler={(index)=>this.removeStock(index)}/>

@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import './AddForm.css';
-import Back from '../Back/Back';
+import FormModal from '../FormModal/FormModal';
 
-class AddForm extends Component {
+
+class AddFormModal extends Component {
     constructor(props){        
         super(props)
         this.state={        
@@ -10,11 +11,15 @@ class AddForm extends Component {
          }
          console.log(props);
     }
+   //This will update the props in child whenever state changes in parent.
    static getDerivedStateFromProps(props, state) {
     return {
         showModal:props.showModal
     };
    }
+    
+        
+        //Function for Form validation for all input fields   
         checkNumber(){
             let numberOutput=document.getElementById("number");  
             let n=document.myForm.shares;
@@ -22,18 +27,18 @@ class AddForm extends Component {
                 numberOutput.innerHTML="";
                 n.style.backgroundColor="white";
             }
-            else if(n.value<=0){
-                numberOutput.innerHTML="Please enter a valid number:";
-                n.style.backgroundColor="red";
-            }
-            else if(n.value>=99999){
-                numberOutput.innerHTML=`More than 1Lakh shares not allowed`;
-                n.style.backgroundColor="orange";
-            }
-            else{                
-                numberOutput.innerHTML=`You are buying ${n.value} shares`;
-                n.style.backgroundColor="Lightgray";
-            }
+            // else if(n.value<=0){
+            //     numberOutput.innerHTML="Please enter a valid number:";
+            //     n.style.backgroundColor="red";
+            // }
+            // else if(n.value>=99999){
+            //     numberOutput.innerHTML=`More than 1Lakh shares not allowed`;
+            //     n.style.backgroundColor="orange";
+            // }
+            // else{                
+            //     numberOutput.innerHTML=`You are buying ${n.value} shares`;
+            //     n.style.backgroundColor="green";
+            // }
         }
         checkPrice(){
             let priceOutput=document.getElementById("price");                      
@@ -42,16 +47,16 @@ class AddForm extends Component {
                 priceOutput.innerHTML="";
                 p.style.backgroundColor="white";
             }
-            else if(p.value<=0){
-                priceOutput.innerHTML="Please enter a valid number";
-                p.style.backgroundColor="red";
-            }
-            else{
-                let temp=document.myForm.shares.value;
-                let totalCost=p.value*temp;
-                priceOutput.innerHTML=`Your total buying cost:${totalCost}`;
-                p.style.backgroundColor="Lightgray";
-            }
+            // else if(p.value<=0){
+            //     priceOutput.innerHTML="Please enter a valid number";
+            //     p.style.backgroundColor="red";
+            // }
+            // else{
+            //     let temp=document.myForm.shares.value;
+            //     let totalCost=p.value*temp;
+            //     priceOutput.innerHTML=`Your total buying cost:${totalCost}`;
+            //     p.style.backgroundColor="green";
+            // }
          } 
         checkDate(){
             let dateOutput=document.getElementById("date");                      
@@ -60,16 +65,21 @@ class AddForm extends Component {
                 dateOutput.innerHTML="";
                 d.style.backgroundColor="white";
             }
-            else{
-                dateOutput.innerHTML=`${d.value}`;
-                d.style.backgroundColor="Lightgray";
-             }
+            // else{
+            //     dateOutput.innerHTML=`${d.value}`;
+            //     d.style.backgroundColor="green";
+            //  }
          }
+               
+        
+
         render() {
-            return (
+            
+        return (
             (this.state.showModal)?
             <div>
-                <Back/>
+                <FormModal/>
+                <div className="page">
                 <div className="AddStockForm" style={{height:'650px', textAlign:'center', position:'fixed', backgroundColor:'white' ,zIndex: 500, left: '15%', top: '15%', boxSizing: 'border-box', width: '70%'}}>
                     <button onClick={()=>this.props.closeButton()} id="close">x</button>
                     <h1>Add {this.props.companyName}   to My Stocks</h1>
@@ -81,10 +91,13 @@ class AddForm extends Component {
                     </form>
                     <button onClick={(a,b,c)=>this.props.addStockToDb(this.props.companyName,this.props.companySymbol,this.props.id)}className="AddButton">Add</button>
                 </div>
+                </div>
                 
             </div>:null
-         )
+            
+            
+        )
     }
 }
 
-export default AddForm;
+export default AddFormModal;
